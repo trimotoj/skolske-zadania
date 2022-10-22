@@ -31,8 +31,8 @@ def click(event):
 
 canvas = tkinter.Canvas(height=100, width=len(taniere) * 100)
 
-for count, value in enumerate(taniere):
-    tanier(count * 100, value)
+for index, value in enumerate(taniere):
+    tanier(index * 100, value)
 
 canvas.bind("<Button-1>", click)
 
