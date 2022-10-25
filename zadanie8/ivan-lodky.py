@@ -31,6 +31,12 @@ def click(event):
         prevLoc = canvas.coords(f"lodka{i}")
         canvas.delete(f"lodka{i}")
         lodicka(int(prevLoc[0]) + nahodnyPosun(), int(prevLoc[1]), i)
+        
+        
+        # collision detection
+        # https://medium.com/@morevinyl/tkinter-collision-detection-on-canvas-made-simple-320ae6cc58e1
+        
+        
         # x1, y1, x2, y2 = [int(i) for i in canvas.coords("ciel")]
         coll = canvas.find_overlapping(200, 200, 400, 400)
         coll = list(coll)
