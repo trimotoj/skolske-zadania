@@ -39,6 +39,7 @@ def casovac():
 
 
 canvas = tkinter.Canvas(width=400, height=110 + len(farby) * 10)
+canvas.pack()
 canvas.create_text(200, 25, text="Pyrotechnik", fill="blue", font=("Arial", 17))
 canvas.create_text(200, 45, text="oznac spravny kablik", font=("Arial", 10))
 
@@ -51,5 +52,4 @@ casovac()
 
 canvas.bind("<Button-1>", click)
 
-canvas.pack()
 window.mainloop()

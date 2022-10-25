@@ -30,11 +30,11 @@ def click(event):
 
 
 canvas = tkinter.Canvas(height=100, width=len(taniere) * 100)
+canvas.pack()
 
 for index, value in enumerate(taniere):
     tanier(index * 100, value)
 
 canvas.bind("<Button-1>", click)
 
-canvas.pack()
 window.mainloop()
