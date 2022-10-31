@@ -38,5 +38,5 @@ for lodka in range(15):
 print(pozicieX)
 canvas.create_line(650,0,650,800,fill='red',width=2)
 canvas.bind('<Button-1>',klik)
-canvas.mainloop()
+canvas.mainloop() 
 
