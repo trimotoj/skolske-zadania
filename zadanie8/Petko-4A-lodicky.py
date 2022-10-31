@@ -7,7 +7,6 @@ def lodicka(x, y):
     canvas.create_line(x, y, x, y-25, x+10+plachta, y-10, x, y-5)
     canvas.create_polygon(x-20, y, x+20, y, x+10, y+8, x-10, y+8)
 
-
 def animacia():
     canvas.delete('all')
     canvas.create_line(650,0,650,800,fill='red',width=2)
@@ -22,12 +21,10 @@ def animacia():
         if pozicieX[i] >= 630:
             canvas.create_text(350,400,text='Vyhrala lodicka cislo: '+str(i+1),font='Arial 20',fill='red')
             return
-            
-    canvas.after(20,animacia)
+    canvas.after(10,animacia)
 
 def klik(event):
     animacia()    
-
 
 pozicieX=[]
 x , y = 20 , 25
@@ -35,8 +32,6 @@ for lodka in range(15):
     lodicka(x,y)
     y+=55
     pozicieX.append(x)
-print(pozicieX)
 canvas.create_line(650,0,650,800,fill='red',width=2)
 canvas.bind('<Button-1>',klik)
 canvas.mainloop() 
-
