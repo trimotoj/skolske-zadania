@@ -5,7 +5,7 @@ w, h =(pocetTanierov*100)+(pocetTanierov-2)*10+(15) , 105
 canvas=tkinter.Canvas(width=w,height=h)
 canvas.pack()
 
-def klik(suradnice):
+def klik(suradnice): 
     global duplikaty
     x = suradnice.x
     y = suradnice.y
