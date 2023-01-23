@@ -23,7 +23,7 @@ def animacia():
     if prvaLodka:
         canvas.create_text(350,400,text='Vyhrala lodicka cislo: '+str(prvaLodka+1),font='Arial 20',fill='red')
         return
-    canvas.after(10,animacia)    
+    canvas.after(20,animacia)    
 
 def klik(event):
     animacia()    
