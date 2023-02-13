@@ -19,7 +19,7 @@ def draw(skladba,noty):
 
 
 #==============================================================
-import tkinter, random
+import tkinter
 sirka, vyska = 350, 150
 canvas = tkinter.Canvas(width=sirka, height=vyska)
 canvas.pack()
