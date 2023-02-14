@@ -16,8 +16,6 @@ def draw(skladba,noty):
                 ynoty=(y-5)-(i*5)
                 canvas.create_oval(xnoty,ynoty,xnoty+10,ynoty+10)
                 xnoty+=25
-
-
 #==============================================================
 import tkinter
 sirka, vyska = 350, 150
