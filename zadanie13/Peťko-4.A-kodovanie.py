@@ -34,7 +34,7 @@ with open('zadanie13/obrazok.txt') as file:
     canvas=tkinter.Canvas(width=sirka,height=vyska,bg='white')
     kresli(file)
     komprimuj(obrazok)
-    #subor.close()
+    subor.close()
 
 canvas.pack()
 canvas.mainloop()

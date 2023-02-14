@@ -1,4 +1,4 @@
-decnumber=541
+decnumber=123
 binnumber=''
 while decnumber != 0:
     if decnumber % 2 == 1:
