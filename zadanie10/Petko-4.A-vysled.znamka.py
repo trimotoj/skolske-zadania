@@ -1,5 +1,5 @@
 with open('zadanie10/VYSLEDZNAMKA.txt','r') as file:
-    subor=open('VYSVEDCENIE.txt','w')
+    subor=open('zadanie10/VYSVEDCENIE.txt','w')
     for line in file:
         sucet_znamok=0
         line=line.strip().split()

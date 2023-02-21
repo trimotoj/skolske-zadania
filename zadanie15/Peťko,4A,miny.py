@@ -31,8 +31,8 @@ pocet=10
 xsur=[]
 ysur=[]
 zrus=0
-subor=open('MINY.txt','w')
-subor2=open('CESTA.txt','w')
+subor=open('zadanie15/MINY.txt','w')
+subor2=open('zadanie15/CESTA.txt','w')
 miny(pocet)
 canvas.bind('<B1-Motion>',pohyb)
 canvas.mainloop()

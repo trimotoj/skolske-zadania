@@ -14,7 +14,7 @@ def kresli(file):
 #
 def komprimuj(obrazok):
     global pocet, subor
-    subor=open('KOMPRIM.txt','w')
+    subor=open('zadanie13/KOMPRIM.txt','w')
     subor.write(str(rozmery[0])+' '+str(rozmery[1])+'\n')
     subor.write(obrazok[0]+' ')
     for i in range(len(obrazok)-1):

@@ -28,7 +28,7 @@ for i in range(len(farby)):
     canvas.create_rectangle(x,y,x+100,y+100,fill=farby[i],outline='')
     x+=100
 
-subor=open('vyber_jedla.txt','w')
+subor=open('zadanie14/vyber_jedla.txt','w')
 subor.close()
 
 canvas.bind('<Button-1>', vyber)
