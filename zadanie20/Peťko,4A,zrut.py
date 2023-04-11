@@ -1,53 +1,67 @@
-def zrut():
-    canvas.create_oval(xz,yz,xz+rz,yz+rz,fill='blue',tags='zrut')
-
-def jablcka(pocet):
-    
-    for i in range(pocet):
-        xj=random.randint(xz+rz+1,w-rj-1)
-        yj=random.randint(yz+rz+1,h-rj-1)
-        canvas.create_oval(xj-rj,yj-rj,xj+rj,yj+rj,fill='red')
-        suradnice_jablcok.append((xj,yj))
+import tkinter
+import random
+w = h = 500
+canvas = tkinter.Canvas(width=w, height=h)
+canvas.pack()
 
 
 def pohyb():
-    global xz,yz
+    global xZrut, yZrut
     canvas.delete('zrut')
-    xz+=xp
-    yz+=yp
-    zrut()
-    canvas.after(20,pohyb)
+    xZrut += xPosun
+    yZrut += yPosun
+    canvas.create_oval(xZrut, yZrut, xZrut+r,yZrut+r, fill='blue', tags='zrut')
+    for i in range(len(sur)):
+        if  xZrut+r >= sur[i][0]+rj and xZrut >= sur[i][1]:
+            if yZrut+r >= sur[i][1]+rj and yZrut >= sur[i][1]:
+                canvas.delete(str(i+2))
+
+    # for i in range(len(sur)):
+    # if sur[i][0]+rj >= xZrut+r >= sur[i][0] and sur[i][1]+rj >= yZrut+r >= sur[i][1]:
+    # wdcanvas.delete(str(i+1))
+    # print(sur[i][0])
+    # print(xZrut)
+    # for i in range(len(sur)):
+    # canvas.delete(sur[i])
+
+    # canvas.delete(str(i))
+    canvas.after(20, pohyb)
+
 
 def zmena_smeru(event):
-    global xp,yp
+    global xPosun, yPosun
     if event.keysym == 'w':
-        xp=0
-        yp=-1
+        yPosun = -1
+        xPosun = 0
     if event.keysym == 'a':
-        xp=-1
-        yp=0
+        xPosun = -1
+        yPosun = 0
     if event.keysym == 's':
-        xp=0
-        yp=1
+        yPosun = 1
+        xPosun = 0
     if event.keysym == 'd':
-        xp=1
-        yp=0
+        xPosun = 1
+        yPosun = 0
 
 
-import tkinter, random
-w=h=500
-canvas=tkinter.Canvas(width=w,height=h)
+xZrut = yZrut = 0
+xPosun = 1
+yPosun = 0
+r = 50
+rj = 20
+N = 20
+sur = []
+canvas.create_oval(xZrut, yZrut, xZrut+r, yZrut+r, fill='blue', tags='zrut')
 
-xz=yz=5
-xp=1
-yp=0
-rz=50
-rj=10
-suradnice_jablcok=[]
-jablcka(10)
+for i in range(N):
+    x = random.randint(0, w-rj)
+    if x >= r:
+        y = random.randint(0, h-rj)
+    else:
+        y = random.randint(r, h-rj)
+    canvas.create_oval(x, y, x+rj, y+rj, fill='red',tags=str(i))  # ,tags=str(i+1))
+    sur.append([x, y])
+
 pohyb()
-canvas.bind_all('<Key>',zmena_smeru)
-
-print(suradnice_jablcok)
-canvas.pack()
+canvas.bind_all('<Key>', zmena_smeru)
 canvas.mainloop()

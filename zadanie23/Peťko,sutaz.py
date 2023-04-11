@@ -1,38 +1,27 @@
 krajiny=[]
 pocet=[]
-meno=[]
-vysledok=[]
-
+body=0
+sutaziaci=[]
+vitaz=''
 with open('zadanie23/skok_do_dialky','r') as file:
-    line=file.readline().split()
-    krajiny.append(line[1])
-    pocet.append(1)
-    meno.append(line[0])
-    body=0
-    for i in line[2:]:
-            if int(i) > body:
-                body = int(i)
-    vysledok.append(body)
     for line in file:
-        body=0
-        line=line.split()
-        meno.append(line[0])
-        for i in line[2:]:
-            if int(i) > body:
-                body = int(i)
-        vysledok.append(body)
-        for i in range(len(krajiny)):
-            if line[1] == krajiny[i]:
-                pocet[i] += 1
-        if line[1] not in krajiny:
+        line=line.strip().split()
+        sutaziaci.append(line)
+        if line[1] in krajiny:
+            for i in range(len(krajiny)):
+                if line[1] == krajiny[i]:
+                    pocet[i] += 1
+        else:
             krajiny.append(line[1])
             pocet.append(1)
+        for i in line[2:]:
+            if int(i) >= body:
+                body=int(i)
 
-    for i in range(len(krajiny)):
-        print(str(pocet[i])+'x '+krajiny[i])
+for i in range(len(sutaziaci)):
+    if str(body) in sutaziaci[i]:
+        vitaz += sutaziaci[i][0]+' '
 
-    vitazi=''   
-    for i in range(len(vysledok)):
-        if vysledok[i] == body:
-            vitazi += meno[i]+' '
-    print('Víťazi: '+vitazi)
+for i in range(len(pocet)):
+    print(str(pocet[i])+'x '+krajiny[i])
+print('vitaz/vitazi:'+vitaz)

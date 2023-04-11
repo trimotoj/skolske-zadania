@@ -1,30 +1,30 @@
-pocet_objednavok=0
-jedla=['z','c','m','o']
-pocet_jedal=[0]*len(jedla)
-dostatocny_pocet_jedal=''
-nedostatocny_pocet_jedal=''
-
+objednane_jedla=0
+jedla=[]
+pocet=[]
+dostatok=''
+nedostatok=''
 with open('zadanie17/objednane_jedla.txt','r') as file:
     for line in file:
-        line=line.strip()
+        objednane_jedla+=1
+        line=line.split()
         for i in range(len(jedla)):
-            if line[-1] == jedla[i]:
-                pocet_jedal[i] += 1
-        pocet_objednavok+=1
+            if jedla[i] == line[1]:
+                pocet[i] +=1
+        if line[1] not in jedla:
+            jedla.append(line[1])
+            pocet.append(1)
+            
+print('Pocet objednanych jedal:',objednane_jedla)
 
-    for i in range(len(pocet_jedal)):
-        if pocet_jedal[i] >= 20:
-            dostatocny_pocet_jedal+=jedla[i]+' '
-        else:
-            nedostatocny_pocet_jedal+=jedla[i]+' '
+for i in range(len(jedla)):
+    print(str(pocet[i])+'x'+' '+jedla[i])
+    if pocet[i] >= 20:
+        dostatok += str(jedla[i])+' '
+    else:
+        nedostatok += str(jedla[i])+' '
 
-    print('Počet objednaných jedál:',pocet_objednavok)
-    print('------')
+print('dostatok: '+dostatok)
+print('nedostatok: '+nedostatok)
 
-    for i in range(len(jedla)):
-        print(str(pocet_jedal[i])+'x',jedla[i])
-        
-    print('------')
-    print('Jedlá s dostatočným množstvom objednávok: '+dostatocny_pocet_jedal)
-    print('Jedlá s nedostatočným množstvom objednávok: '+nedostatocny_pocet_jedal)
-    
+
+
