@@ -6,38 +6,27 @@ canvas.pack()
 
 
 vyraz='((a+b)*2+(((c+d)-2*a)+b)*(e+f)*2)'
-zatvorky=''
-for i in vyraz:
-    if i in '()':
-        zatvorky+=i
-farby=('red','green','blue','yellow','purple','violet')
+farby=['red','green','blue','yellow','purple','violet']
+pocitadlo = -1
+
+
 x=10
 y=25
-a=0
-dlzka_zatvoriek=0
-for i in range(len(vyraz)):
-    if vyraz[i] in '()':
-        dlzka_zatvoriek+=1
-    if dlzka_zatvoriek == len(zatvorky):
-        canvas.create_text(x,y,text=vyraz[i],fill=farby[0],font='Arial 30')
-        dlzka_zatvoriek=0
-    elif vyraz[i] == '(':
-        canvas.create_text(x,y,text=vyraz[i],fill=farby[a],font='Arial 30')
-        a+=1
-        b=a
-    elif vyraz[i] == ')':
-        b-=1
-        canvas.create_text(x,y,text=vyraz[i],fill=farby[b],font='Arial 30')
+
+for i in vyraz:
+    if i == '(':
+        pocitadlo += 1
+        farba = farby[pocitadlo]
+        canvas.create_text(x,y,text=i,fill=farba,font='Arial 30')
+
+    elif i == ")":
+        farba = farby[pocitadlo]
+        canvas.create_text(x,y,text=i,fill=farba,font='Arial 30')
+        farby.pop(pocitadlo)
+        pocitadlo -= 1
+
     else:
-        canvas.create_text(x,y,text=vyraz[i],font='Arial 30')
+        canvas.create_text(x,y,text=i,font='Arial 30') 
     x+=20
-
-if len(zatvorky) % 2 == 0 or zatvorky[-1] == '(':
-    canvas.create_text(w//2,y+75,text='Uzátvorkovanie je správne',font='Ariel 30')
-
-else:
-    canvas.create_text(w//2,y+75,text='Uzátvorkovanie je nesprávne',font='Ariel 30')
-
-
 
 canvas.mainloop()
