@@ -1,6 +1,7 @@
 def draw():
-    global x, y
+    global y
     x = 200
+    r=10
     x -= (int(line[0])-1)*(2*r)
     for i in range(len(line[1])):
         farba='white'
@@ -12,9 +13,10 @@ def draw():
     y += 2*r
 
 y=50
-r=10
 import tkinter
-canvas=tkinter.Canvas()
+width=500
+height=300
+canvas=tkinter.Canvas(width=width,height=height)
 canvas.pack()
 with open('zadanie28/vstup','r') as file:
     for line in file:
